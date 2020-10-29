@@ -5,7 +5,7 @@ import { ActivityIndicator, Dimensions } from "react-native";
 import Slide from "../../components/Movies/Slide";
 import Title from "../../components/Title";
 import { ScrollView } from "react-native";
-
+import Vertical from "../../components/Vertical";
 const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 
 const SliderContainer = styled.View`
@@ -15,7 +15,7 @@ const SliderContainer = styled.View`
 `;
 
 const Container = styled.View``;
-export default ({ loading, nowPlaying }) => {
+export default ({ loading, nowPlaying, popular }) => {
     return (
         <ScrollView
             style={{
@@ -36,7 +36,7 @@ export default ({ loading, nowPlaying }) => {
                                 <Slide
                                     key={movie.id}
                                     id={movie.id}
-                                    title={movie.original_title}
+                                    title={movie.title}
                                     overview={movie.overview}
                                     backgrounImage={movie.backdrop_path}
                                     votes={movie.vote_average}
@@ -47,6 +47,21 @@ export default ({ loading, nowPlaying }) => {
                     </SliderContainer>
                     <Container>
                         <Title title={"Popular Movies"} />
+                        <ScrollView
+                            style={{ marginTop: 20 }}
+                            contentContainerStyle={{ paddingLeft: 30 }}
+                            showsHorizontalScrollIndicator={false}
+                            horizontal
+                        >
+                            {popular.map((movie) => (
+                                <Vertical
+                                    key={movie.id}
+                                    poster={movie.poster_path}
+                                    title={movie.title}
+                                    votes={movie.vote_average}
+                                />
+                            ))}
+                        </ScrollView>
                     </Container>
                 </>
             )}
