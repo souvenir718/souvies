@@ -1,11 +1,11 @@
 import React, { useEffect, useLayoutEffect } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Movies from "../screens/Movies";
-import Tv from "../screens/Tv";
 import Search from "../screens/Search";
 import Favs from "../screens/Favs";
 import { Ionicons } from "@expo/vector-icons";
 import { Platform } from "react-native";
+import TvContainer from "../screens/Tv/TvContainer";
 
 const Tabs = createBottomTabNavigator();
 
@@ -76,8 +76,8 @@ export default ({ navigation, route }) => {
                 };
             }}
         >
+            <Tabs.Screen name="Tv" component={TvContainer} />
             <Tabs.Screen name="Movies" component={Movies} />
-            <Tabs.Screen name="Tv" component={Tv} />
             <Tabs.Screen name="Search" component={Search} />
             <Tabs.Screen name="Discovery" component={Favs} />
         </Tabs.Navigator>
