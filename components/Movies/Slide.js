@@ -6,6 +6,7 @@ import { apiImage } from "../../api";
 import Poster from "../Poster";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Votes from "../Votes";
+import { trimText } from "../../utils";
 
 const Container = styled.View`
     height: 100%;
@@ -68,18 +69,20 @@ const Slide = ({ id, title, backgrounImage, votes, overview, poster }) => {
                 source={{ uri: apiImage(backgrounImage) }}
             />
             <Content>
-                <Poster url={apiImage(poster)} />
+                <Poster url={poster} />
                 <Data>
                     <Title>
-                        {title.length > 20 ? `${title.slice(0, 20)}...` : title}
+                        {trimText(title, 20)}
+                        {/* {title.length > 20 ? `${title.slice(0, 20)}...` : title} */}
                     </Title>
                     <VotesContainer>
                         <Votes votes={votes} />
                     </VotesContainer>
                     <Overview>
-                        {overview.length > 80
+                        {trimText(overview, 80)}
+                        {/* {overview.length > 80
                             ? `${overview.slice(0, 80)}...`
-                            : overview}
+                            : overview} */}
                     </Overview>
                     <TouchableOpacity>
                         <Button>
@@ -98,6 +101,7 @@ Slide.propTypes = {
     backgrounImage: Proptypes.string.isRequired,
     votes: Proptypes.number.isRequired,
     overview: Proptypes.string.isRequired,
+    poster: Proptypes.string.isRequired,
 };
 
 export default Slide;

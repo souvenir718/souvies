@@ -5,6 +5,7 @@ import Poster from "./Poster";
 import { apiImage } from "../api";
 import Votes from "./Votes";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { trimText } from "../utils";
 
 const Container = styled.View`
     align-items: center;
@@ -18,12 +19,13 @@ const Title = styled.Text`
     margin-bottom: 5px;
 `;
 
-const Vertical = ({ poster, title, votes }) => (
+const Vertical = ({ id, poster, title, votes }) => (
     <TouchableOpacity>
         <Container>
-            <Poster url={apiImage(poster)} />
+            <Poster url={poster} />
             <Title>
-                {title.length > 10 ? `${title.slice(0, 10)}...` : title}
+                {trimText(title, 10)}
+                {/* {title.length > 10 ? `${title.slice(0, 10)}...` : title} */}
             </Title>
             <Votes votes={votes} />
         </Container>
@@ -31,6 +33,7 @@ const Vertical = ({ poster, title, votes }) => (
 );
 
 Vertical.propTypes = {
+    id: PropTypes.number.isRequired,
     poster: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     votes: PropTypes.number.isRequired,
