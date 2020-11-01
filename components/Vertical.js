@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components/native";
 import PropTypes from "prop-types";
 import Poster from "./Poster";
-import { apiImage } from "../api";
 import Votes from "./Votes";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { trimText } from "../utils";

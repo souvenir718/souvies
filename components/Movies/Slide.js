@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components/native";
 import Proptypes from "prop-types";
-import { Dimensions, Image } from "react-native";
 import { apiImage } from "../../api";
 import Poster from "../Poster";
 import { TouchableOpacity } from "react-native-gesture-handler";
@@ -61,12 +60,14 @@ const ButtonText = styled.Text`
     color: white;
 `;
 
-const Slide = ({ id, title, backgrounImage, votes, overview, poster }) => {
+const Slide = ({ id, title, backgroundImage, votes, overview, poster }) => {
     return (
         <Container>
             <BG
                 style={{ width: "100%", height: "100%" }}
-                source={{ uri: apiImage(backgrounImage) }}
+                source={{
+                    uri: apiImage(backgroundImage ? backgroundImage : poster),
+                }}
             />
             <Content>
                 <Poster url={poster} />
@@ -98,7 +99,7 @@ const Slide = ({ id, title, backgrounImage, votes, overview, poster }) => {
 Slide.propTypes = {
     id: Proptypes.number.isRequired,
     title: Proptypes.string.isRequired,
-    backgrounImage: Proptypes.string.isRequired,
+    backgroundImage: Proptypes.string,
     votes: Proptypes.number.isRequired,
     overview: Proptypes.string.isRequired,
     poster: Proptypes.string.isRequired,

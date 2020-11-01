@@ -1,6 +1,5 @@
 import React from "react";
 import { ScrollView } from "react-native";
-import Horizontal from "./Horizontal";
 import Title from "./Title";
 import PropTypes from "prop-types";
 
