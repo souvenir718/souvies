@@ -9,6 +9,7 @@ import MoviesPresenter from "./MoviesPresenter";
 // );
 
 export default () => {
+    const [refreshing, setRefreshing] = useState(false);
     const [movies, setMovies] = useState({
         loading: true,
         nowPlaying: [],
@@ -36,5 +37,11 @@ export default () => {
         getData();
     }, []);
 
-    return <MoviesPresenter {...movies} />;
+    // const onRefresh = async() => {
+    //     setRefreshing(true);
+    //     await getData();
+    //     setRefreshing(false);
+    // }
+
+    return <MoviesPresenter refreshFn={getData} {...movies} />;
 };

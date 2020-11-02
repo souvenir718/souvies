@@ -10,9 +10,9 @@ import VerticalSllider from "../../components/VerticalSlider";
 
 const Container = styled.View``;
 
-export default ({ loading, nowPlaying, popular, upcoming }) => {
+export default ({ refreshFn, loading, nowPlaying, popular, upcoming }) => {
     return (
-        <ScrollContinaer loading={loading}>
+        <ScrollContinaer refreshFn={refreshFn} loading={loading}>
             <>
                 <VerticalSllider>
                     {nowPlaying.map((movie) => (
