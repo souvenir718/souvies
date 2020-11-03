@@ -6,6 +6,7 @@ import Poster from "../Poster";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Votes from "../Votes";
 import { trimText } from "../../utils";
+import { useNavigation } from "@react-navigation/native";
 
 const Container = styled.View`
     height: 100%;
@@ -61,6 +62,16 @@ const ButtonText = styled.Text`
 `;
 
 const Slide = ({ id, title, backgroundImage, votes, overview, poster }) => {
+    const navigation = useNavigation();
+    const goToDetail = () =>
+        navigation.navigate("Detail", {
+            id,
+            title,
+            backgroundImage,
+            votes,
+            overview,
+            poster,
+        });
     return (
         <Container>
             <BG
@@ -85,7 +96,7 @@ const Slide = ({ id, title, backgroundImage, votes, overview, poster }) => {
                             ? `${overview.slice(0, 80)}...`
                             : overview} */}
                     </Overview>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={goToDetail}>
                         <Button>
                             <ButtonText>View Details</ButtonText>
                         </Button>

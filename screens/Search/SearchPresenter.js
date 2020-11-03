@@ -30,6 +30,7 @@ export default ({ movies, shows, keyword, onChange, onSubmit }) => (
                         title={movie.title}
                         poster={movie.poster_path || movie.backdrop_path}
                         votes={movie.vote_average}
+                        overview={movie.overview}
                     />
                 ))}
             </HorizontalSlider>
@@ -43,6 +44,7 @@ export default ({ movies, shows, keyword, onChange, onSubmit }) => (
                         title={show.name}
                         poster={show.poster_path || show.backdrop_path}
                         votes={show.vote_average}
+                        overview={show.overview}
                     />
                 ))}
             </HorizontalSlider>

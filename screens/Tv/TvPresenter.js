@@ -23,6 +23,7 @@ export default ({ refreshFn, loading, popular, topRated, today, thisWeek }) => (
                         poster={show.poster_path}
                         title={show.name}
                         votes={show.vote_average}
+                        overview={show.overview}
                     />
                 ))}
             </HorizontalSlider>
@@ -47,6 +48,7 @@ export default ({ refreshFn, loading, popular, topRated, today, thisWeek }) => (
                         poster={show.poster_path}
                         title={show.name}
                         votes={show.vote_average}
+                        overview={show.overview}
                     />
                 ))}
             </HorizontalSlider>

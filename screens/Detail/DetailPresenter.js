@@ -55,35 +55,27 @@ const DataValue = styled.Text`
     font-weight: 500;
 `;
 
-export default ({
-    navigation,
-    route: {
-        params: { id, title, backgroundImage, poster, votes, overview },
-    },
-}) => {
-    navigation.setOptions({ title });
-    return (
-        <ScrollContainer loading={false}>
-            <>
-                <Header>
-                    <BG source={{ uri: apiImage(backgroundImage, "-") }} />
-                    <Container>
-                        <Poster url={poster} />
-                        <Info>
-                            <Title>{title}</Title>
-                            {votes && <Votes votes={votes} />}
-                        </Info>
-                    </Container>
-                </Header>
-                <Data>
-                    {overview && (
-                        <>
-                            <DataName>Overview</DataName>
-                            <DataValue>{overview}</DataValue>
-                        </>
-                    )}
-                </Data>
-            </>
-        </ScrollContainer>
-    );
-};
+export default () => (
+    <ScrollContainer loading={false}>
+        <>
+            <Header>
+                <BG source={{ uri: apiImage(backgroundImage, "-") }} />
+                <Container>
+                    <Poster url={poster} />
+                    <Info>
+                        <Title>{title}</Title>
+                        {votes && <Votes votes={votes} />}
+                    </Info>
+                </Container>
+            </Header>
+            <Data>
+                {overview && (
+                    <>
+                        <DataName>Overview</DataName>
+                        <DataValue>{overview}</DataValue>
+                    </>
+                )}
+            </Data>
+        </>
+    </ScrollContainer>
+);

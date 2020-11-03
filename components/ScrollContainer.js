@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ActivityIndicator, RefreshControl, ScrollView } from "react-native";
 import PropTypes from "prop-types";
 
-const ScrollContinaer = ({
+const ScrollContainer = ({
     refreshFn,
     loading,
     children,
@@ -42,11 +42,11 @@ const ScrollContinaer = ({
     );
 };
 
-ScrollContinaer.propTypes = {
+ScrollContainer.propTypes = {
     loading: PropTypes.bool,
     children: PropTypes.node.isRequired,
     contentContainerStyle: PropTypes.object,
     refreshFn: PropTypes.func,
 };
 
-export default ScrollContinaer;
+export default ScrollContainer;

@@ -4,6 +4,7 @@ import Proptypes from "prop-types";
 import Poster from "./Poster";
 import { formatDate, trimText } from "../utils";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { useNavigation } from "@react-navigation/native";
 
 const Container = styled.View`
     padding: 0px 30px;
@@ -35,8 +36,17 @@ const ReleaseDate = styled.Text`
 `;
 
 const Horizontal = ({ id, title, poster, overview, releaseDate }) => {
+    const navigation = useNavigation();
+    const goToDetail = () => {
+        navigation.navigate("Detail", {
+            id,
+            title,
+            poster,
+            overview,
+        });
+    };
     return (
-        <TouchableOpacity>
+        <TouchableOpacity onPress={goToDetail}>
             <Container>
                 <Poster url={poster} />
                 <Data>
