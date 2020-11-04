@@ -18,6 +18,7 @@ export default ({ refreshFn, loading, popular, topRated, today, thisWeek }) => (
             <HorizontalSlider title={"Popular Show"}>
                 {popular.map((show) => (
                     <Vertical
+                        isTv={true}
                         key={show.id}
                         id={show.id}
                         poster={show.poster_path}
@@ -43,6 +44,7 @@ export default ({ refreshFn, loading, popular, topRated, today, thisWeek }) => (
             <HorizontalSlider title={"Top Rated"}>
                 {topRated.map((show) => (
                     <Vertical
+                        isTv={true}
                         key={show.id}
                         id={show.id}
                         poster={show.poster_path}
@@ -55,6 +57,7 @@ export default ({ refreshFn, loading, popular, topRated, today, thisWeek }) => (
             <List title="Airing Todya">
                 {today.map((show) => (
                     <Horizontal
+                        isTv={true}
                         key={show.id}
                         id={show.id}
                         title={show.name}

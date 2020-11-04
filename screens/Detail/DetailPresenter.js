@@ -1,10 +1,10 @@
 import React from "react";
-import { Dimensions } from "react-native";
+import { ActivityIndicator, Dimensions } from "react-native";
 import styled from "styled-components/native";
-import { apiImage } from "../api";
-import Poster from "../components/Poster";
-import ScrollContainer from "../components/ScrollContainer";
-import Votes from "../components/Votes";
+import { apiImage } from "../../api";
+import Poster from "../../components/Poster";
+import ScrollContainer from "../../components/ScrollContainer";
+import Votes from "../../components/Votes";
 
 const BG = styled.Image`
     width: 100%;
@@ -39,14 +39,14 @@ const Info = styled.View`
 
 const Data = styled.View`
     padding: 0px 30px;
-    margin-top: 80px;
+    margin-top: 60px;
 `;
 
 const DataName = styled.Text`
     color: white;
     opacity: 0.8;
     font-weight: 800;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
 `;
 
 const DataValue = styled.Text`
@@ -55,25 +55,31 @@ const DataValue = styled.Text`
     font-weight: 500;
 `;
 
-export default () => (
+export default ({ result, loading }) => (
     <ScrollContainer loading={false}>
         <>
             <Header>
-                <BG source={{ uri: apiImage(backgroundImage, "-") }} />
+                <BG source={{ uri: apiImage(result.backgroundImage, "-") }} />
                 <Container>
-                    <Poster url={poster} />
+                    <Poster url={result.poster} />
                     <Info>
-                        <Title>{title}</Title>
-                        {votes && <Votes votes={votes} />}
+                        <Title>{result.title ? result.title : ""}</Title>
+                        {result.votes && <Votes votes={result.votes} />}
                     </Info>
                 </Container>
             </Header>
             <Data>
-                {overview && (
+                {result.overview && (
                     <>
                         <DataName>Overview</DataName>
-                        <DataValue>{overview}</DataValue>
+                        <DataValue>{result.overview}</DataValue>
                     </>
+                )}
+                {loading && (
+                    <ActivityIndicator
+                        style={{ marginTop: 30 }}
+                        color={"white"}
+                    />
                 )}
             </Data>
         </>
